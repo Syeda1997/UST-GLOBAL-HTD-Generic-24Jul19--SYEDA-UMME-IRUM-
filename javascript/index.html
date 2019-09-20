@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript</title>
+    
+    <script>
+        var myage=22;
+        console.log("my age ="+myage);
+        var myname='syeda';
+        console.log("myname ="+myname);
+        var hashobbies='true';
+        console.log("hobbies ="+hashobbies);
+        var myhobbies;
+        console.log("hobby ="+myhobbies);
+        var fruits=null;
+        console.log("fruits ="+fruits);
+    </script>
+</head>
+<body>
+    <script>
+        var person = {
+            Name: 'khan',
+            age : 40,
+            height : 6,
+            weight : 60,
+            color : 'white',
+            getFullName : function(){
+                return this.name;
+            }
+
+        }
+        console.log(person);
+        var Name=person.Name;
+        console.log('Name:'+Name)
+        var age=person.age;
+        console.log('Age:'+age)
+        var height=person.height;
+        console.log('height:'+height)
+        var weight=person.weight;
+        console.log('weight:'+weight)
+        var color=person.color;
+        console.log('Color:'+color)
+        console.log(person.getFullName());
+        console.log("======================")
+        var fruits=['orange','mango','apple','pear'];
+        var f1=fruits[0];
+        var f2=fruits[1];
+        var f3=fruits[2];
+        var f4=fruits[3];
+        console.log('fruit1='+f1)
+        console.log('fruit2='+f2)
+        console.log('fruit3='+f3)
+        console.log('fruit4='+f4)
+
+        for(var i=0;i<fruits.length;i++)
+        {
+            console.log(fruits[i]);
+        }
+        
+    </script>
+</body>
+</html>
