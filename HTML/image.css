@@ -1,0 +1,26 @@
+/* to make img inline */
+.img-div{
+    float: left;
+    border:5px solid rgb(184, 6, 6);
+    border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 20px;
+    background-color: white;
+    
+}
+img{
+    width:400px;
+    height: 300px;
+    transition: all 5s;
+    /* to do slow zooming */
+}
+img:hover{
+    transform: scale(1.2,1.1);
+}
+.desc{
+    margin-top: 10px;
+    font-family: cursive;
+    font-size: 20px;
+}

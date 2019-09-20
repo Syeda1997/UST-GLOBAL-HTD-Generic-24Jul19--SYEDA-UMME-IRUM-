@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form</title>
+</head>
+<body>
+    <form action="">
+
+    <div>
+    <label for="Name">Name</label><br>
+    <input type="text" name="Name" id="Name" required placeholder="enter name">
+    </div>
+
+    <div>
+    <label for="psd">Password</label><br>
+    <input type="password" name="psd" id="psd">
+    </div>
+
+    <div>
+    <label for="em">Email</label><br>
+    <input type="email" name="em" id="em">
+    </div>
+
+    <div>
+    <label for="mb">Mobile No</label><br>
+    <input type="tel" name="mb" id="mb">
+    </div>
+
+    <div>
+        <label for="gn">Gender</label><br>
+        <input type="radio" name="gender" id="gn">Male
+        <input type="radio" name="gender" id="gn">Female
+        <input type="radio" name="gender" id="gn">Others
+    </div><br>
+
+    <div>
+    <label>Joining Month</label><br>
+    <select name="Month" id="Month">
+    <option value="0" selected disabled>Select</option>
+    <option value="Jan">January</option>
+    <option value="Feb">February</option>
+    <option value="Mar">March</option>
+    <option value="Apr">April</option>
+    <option value="May">May</option>
+    <option value="Jun">June</option>
+    <option value="Jul">July</option>
+    <option value="Aug">August</option>
+    <option value="sept">September</option>
+    <option value="Oct">October</option>
+    <option value="Nov">November</option>
+    <option value="Dec">December</option>
+    </select>
+    </div><br>
+    
+    <div>
+        <label for="upload file">Upload File</label><br>
+        <input type="file" name="upload" id="upload">
+    </div><br>
+
+    <div>
+        <input type="checkbox" name="chk" id="chk">
+        <label for="">I Agree</label>
+    </div><br>
+    <button type="submit">Submit</button>
+    <button type="Reset">Reset</button>
+    </form>
+</body>
+</html>
