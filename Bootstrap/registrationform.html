@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+            <div class="card col-md-6 mt-2 offset-3">
+           <div class="card-body">
+           <form action="" method="POST" role="form">
+               <legend>Registration</legend>
+            
+               <div class="form-group">
+                   <label for="">First Name</label>
+                   <input type="text" class="form-control" id="firstname" required placeholder="Input field">
+               </div>
+               <div class="form-group">
+                    <label for="">last Name</label>
+                    <input type="text" class="form-control" id="lastname" required placeholder="Input field">
+                </div>
+                <div class="form-group">
+                        <label for="">Email-Id</label>
+                        <input type="email" class="form-control" id="email-id" required placeholder="Input field">
+                </div>
+                <div class="form-group">
+                            <label for="">Mobile.no</label>
+                            <input type="mob" class="form-control" id="mobileno" required placeholder="Input field" minlength="10">
+                </div>
+                <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" id="Password"required placeholder="Input field">
+                </div>
+                <div class="form-group">
+                        <label for="">Re-enter Password</label>
+                        <input type="password" class="form-control" id="re-enterPassword" required placeholder="Input field">
+            </div>
+               <button type="submit" class="btn btn-success">Submit</button>
+               <button type="submit" class="btn btn-primary">Reset</button>
+               <button type="submit" class="btn btn-danger">Cancel</button>
+           </form>
+        </div>   
+    </div>
+        <script src="JS/jquery-3.4.1.js"></script>
+        <script src="bootstrap-4.3.1-dist/js/bootstrap.js"></script>
+    </div>
+</body>
+</html>
