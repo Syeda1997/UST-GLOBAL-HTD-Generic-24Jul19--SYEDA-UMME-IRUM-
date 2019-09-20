@@ -1,0 +1,1511 @@
+1. How to create database?
+mysql> create database UST; 
+
+2. How to display databases present in database?
+mysql> show databases; 
+ 
+3. How to use database?
+mysql> use ust; 
+
+4. How to display tables in a database?
+mysql> show tables; 
+
+5. How to create a table in database?
+mysql> create table student(id int,name varchar(30),emailId varchar(30)); 
+
+6. How to see the structure of the table?
+mysql> desc student;
+
+7. WAQ to drop the table?
+mysql> drop table student;
+
+8. WAQ to drop the database?
+mysql> drop database ust;
+
+9. WAQ to alter table and add column?
+mysql> alter table student add branch varchar(30);
+
+10. WAQ to drop column in table?
+mysql> alter table student drop branch;
+
+11. WAQ to change the column name ?
+mysql> alter table student change name studentname varchar(30);
+
+12. WAQ to rename a table?
+mysql> rename table student to student_info;
+
+13. WAQ to insert values in a table?
+mysql> insert into student_info(id,studentname,emailId,mobileNo) values(101,'syeda','syeda@123',98765430);
+OR
+mysql> insert into student_info values(102,'umme','umme@yahoo.com',7890987);
+
+14. WAQ to display or retreive the data from table?
+mysql> select * from student_info;
+
+15. WAQ to insert multiple values in table?
+mysql> insert into student_info values(103,'irum','irum@yahoo.com',78909898),(104,'ruman','ruman@gmail.com',87908970);
+
+16. WAQ to insert particular values in a table? [DML]
+mysql> insert into student_info(id,studentname)values(105,'hadi');
+
+17. WAQ to update the table values? [DML]
+mysql> update student_info set mobileNo=987654321;
+
+18. WAQ to delete values from table? [DML]
+mysql> delete from student_info;
+
+19. WAQ to truncate the values? [DDL]
+mysql> truncate table student_info;
+
+20. WAQ to retrieve a particular column from table(PROJECTION)? [DQL]
+mysql> select id,studentname from student;
+
+21.WAQ to give temporary name for blood group column?
+mysql> select bloodgroup as bg from employee_info;
++------+
+| bg   |
++------+
+| A+   |
+| B+   |
+| O+   |
+| B-   |
+| O-   |
+| A+   |
+| AB+  |
+| AB-  |
+| B+   |
+| O+   |
+| A+   |
+| B-   |
+| O+   |
+| A+   |
+| O-   |
++------+
+15 rows in set (0.00 sec)
+
+22. WAQ to display empname,sal,designation and his annual salary?
+mysql> select name,salary,designation,salary*12 from employee_info;
++---------+--------+--------------------+-----------+
+| name    | salary | designation        | salary*12 |
++---------+--------+--------------------+-----------+
+| vinay   |  30000 | software developer |    360000 |
+| shubham |  12000 | hr                 |    144000 |
+| ria     |  20000 | clerk              |    240000 |
+| tina    |  25000 | analyst            |    300000 |
+| john    |  35000 | tester             |    420000 |
+| sheya   |  12000 | hr                 |    144000 |
+| raima   |  25000 | clerk              |    300000 |
+| smith   |  30000 | salesman           |    360000 |
+| scott   |  35000 | salesman           |    420000 |
+| sneha   |  22000 | tester             |    264000 |
+| saima   |  20000 | analyst            |    240000 |
+| sonam   |  23000 | software developer |    276000 |
+| pratam  |  25000 | clerk              |    300000 |
+| raj     |  22000 | clerk              |    264000 |
+| neha    |  20000 | hr                 |    240000 |
++---------+--------+--------------------+-----------+
+15 rows in set (0.04 sec)
+
+23. WAQ to display empname,sal,designation and his annual salary?[by aliasing]
+
+mysql> select name,salary,designation,salary*12 as Annualsalary from employee_info;
++---------+--------+--------------------+--------------+
+| name    | salary | designation        | Annualsalary |
++---------+--------+--------------------+--------------+
+| vinay   |  30000 | software developer |       360000 |
+| shubham |  12000 | hr                 |       144000 |
+| ria     |  20000 | clerk              |       240000 |
+| tina    |  25000 | analyst            |       300000 |
+| john    |  35000 | tester             |       420000 |
+| sheya   |  12000 | hr                 |       144000 |
+| raima   |  25000 | clerk              |       300000 |
+| smith   |  30000 | salesman           |       360000 |
+| scott   |  35000 | salesman           |       420000 |
+| sneha   |  22000 | tester             |       264000 |
+| saima   |  20000 | analyst            |       240000 |
+| sonam   |  23000 | software developer |       276000 |
+| pratam  |  25000 | clerk              |       300000 |
+| raj     |  22000 | clerk              |       264000 |
+| neha    |  20000 | hr                 |       240000 |
++---------+--------+--------------------+--------------+
+15 rows in set (0.00 sec)
+
+24. WAQ to give the alias name for all the columns present in employee_info  table?
+mysql> select id idno,name ename,emailId email,designation design,mobileNo mobile,age ageNo,dob edob,doj edoj,salary sal,deptid edeptid,bloodgroup bg from employee_info;
++------+---------+-----------+--------------------+-----------+-------+------------+------------+-------+---------+------+
+| idno | ename   | email     | design             | mobile    | ageNo | edob       | edoj       | sal   | edeptid | bg   |
++------+---------+-----------+--------------------+-----------+-------+------------+------------+-------+---------+------+
+|  101 | vinay   | vinay@123 | software developer |   9876789 |    34 | 1984-02-02 | 2005-09-08 | 30000 |      10 | A+   |
+|  102 | shubham | shubham@3 | hr                 | 987690789 |    28 | 1991-05-12 | 2010-01-01 | 12000 |      20 | B+   |
+|  103 | ria     | ria@89    | clerk              | 890909876 |    23 | 1996-09-09 | 2018-07-12 | 20000 |      30 | O+   |
+|  104 | tina    | tina@34   | analyst            |  88908876 |    28 | 1995-06-07 | 2016-09-04 | 25000 |      40 | B-   |
+|  105 | john    | john@234  | tester             | 908907612 |    29 | 1992-09-16 | 2017-02-23 | 35000 |      20 | O-   |
+|  106 | sheya   | sheya@37  | hr                 |  98789789 |    22 | 1998-03-12 | 2018-02-06 | 12000 |      10 | A+   |
+|  107 | raima   | riama@889 | clerk              | 890932376 |    27 | 1994-04-22 | 2016-09-21 | 25000 |      10 | AB+  |
+|  108 | smith   | smith@34  | salesman           | 889876576 |    28 | 1995-09-25 | 2010-08-03 | 30000 |      30 | AB-  |
+|  109 | scott   | scott@84  | salesman           | 890907612 |    30 | 1989-03-22 | 2018-03-13 | 35000 |      40 | B+   |
+|  110 | sneha   | sneha@37  | tester             |  98787861 |    30 | 1987-05-22 | 2018-12-23 | 22000 |      20 | O+   |
+|  111 | saima   | siama@99  | analyst            | 809322376 |    32 | 1982-07-28 | 2016-10-02 | 20000 |      40 | A+   |
+|  112 | sonam   | sonam@89  | software developer |  88976543 |    28 | 1995-02-24 | 2017-09-08 | 23000 |      10 | B-   |
+|  113 | pratam  | pratam@90 | clerk              |  89090567 |    27 | 1994-04-24 | 2017-09-16 | 25000 |      30 | O+   |
+|  114 | raj     | raj@45    | clerk              |  78989789 |    26 | 1993-08-26 | 2018-08-26 | 22000 |      40 | A+   |
+|  115 | neha    | neha@98   | hr                 |  89098790 |    29 | 1992-08-20 | 2010-11-23 | 20000 |      30 | O-   |
++------+---------+-----------+--------------------+-----------+-------+------------+------------+-------+---------+------+
+15 rows in set (0.00 sec)
+
+25. WAQ to display the unique deptid from employee_info table?
+mysql> select distinct deptid from employee_info;
++--------+
+| deptid |
++--------+
+|     10 |
+|     20 |
+|     30 |
+|     40 |
++--------+
+
+26. WAQ to display unique values of designation and deptid?
+mysql> select distinct deptid,designation from employee_info;
++--------+--------------------+
+| deptid | designation        |
++--------+--------------------+
+|     10 | software developer |
+|     20 | hr                 |
+|     30 | clerk              |
+|     40 | analyst            |
+|     20 | tester             |
+|     10 | hr                 |
+|     10 | clerk              |
+|     30 | salesman           |
+|     40 | salesman           |
+|     40 | clerk              |
+|     30 | hr                 |
++--------+--------------------+
+11 rows in set (0.00 sec)
+
+27. WAQ to display unique deptid,designation,age?
+mysql> select distinct deptid,age,designation from employee_info;
++--------+------+--------------------+
+| deptid | age  | designation        |
++--------+------+--------------------+
+|     10 |   34 | software developer |
+|     20 |   28 | hr                 |
+|     30 |   23 | clerk              |
+|     40 |   28 | analyst            |
+|     20 |   29 | tester             |
+|     10 |   22 | hr                 |
+|     10 |   27 | clerk              |
+|     30 |   28 | salesman           |
+|     40 |   30 | salesman           |
+|     20 |   30 | tester             |
+|     40 |   32 | analyst            |
+|     10 |   28 | software developer |
+|     30 |   27 | clerk              |
+|     40 |   26 | clerk              |
+|     30 |   29 | hr                 |
++--------+------+--------------------+
+15 rows in set (0.03 sec)
+
+28. WAQ to display name and salary where salary is increased by 5000?
+mysql> select name,salary+5000 as Addsalary from employee_info;
++---------+-----------+
+| name    | Addsalary |
++---------+-----------+
+| vinay   |     35000 |
+| shubham |     17000 |
+| ria     |     25000 |
+| tina    |     30000 |
+| john    |     40000 |
+| sheya   |     17000 |
+| raima   |     30000 |
+| smith   |     35000 |
+| scott   |     40000 |
+| sneha   |     27000 |
+| saima   |     25000 |
+| sonam   |     28000 |
+| pratam  |     30000 |
+| raj     |     27000 |
+| neha    |     25000 |
++---------+-----------+
+15 rows in set (0.00 sec)
+
+29. WAQ to display name and salary where salary is increased by 5000?
+mysql> select name,salary-5000 as subsalary from employee_info;
++---------+-----------+
+| name    | subsalary |
++---------+-----------+
+| vinay   |     25000 |
+| shubham |      7000 |
+| ria     |     15000 |
+| tina    |     20000 |
+| john    |     30000 |
+| sheya   |      7000 |
+| raima   |     20000 |
+| smith   |     25000 |
+| scott   |     30000 |
+| sneha   |     17000 |
+| saima   |     15000 |
+| sonam   |     18000 |
+| pratam  |     20000 |
+| raj     |     17000 |
+| neha    |     15000 |
++---------+-----------+
+15 rows in set (0.03 sec)
+
+30. WAQ name,sal for per day?
+mysql> select name,salary/30 as subsalary from employee_info;
++---------+-----------+
+| name    | subsalary |
++---------+-----------+
+| vinay   | 1000.0000 |
+| shubham |  400.0000 |
+| ria     |  666.6667 |
+| tina    |  833.3333 |
+| john    | 1166.6667 |
+| sheya   |  400.0000 |
+| raima   |  833.3333 |
+| smith   | 1000.0000 |
+| scott   | 1166.6667 |
+| sneha   |  733.3333 |
+| saima   |  666.6667 |
+| sonam   |  766.6667 |
+| pratam  |  833.3333 |
+| raj     |  733.3333 |
+| neha    |  666.6667 |
++---------+-----------+
+15 rows in set (0.00 sec)
+
+31. WAQ to display annual salary?
+mysql> select name,salary*12 as annualsalary from employee_info;
++---------+--------------+
+| name    | annualsalary |
++---------+--------------+
+| vinay   |       360000 |
+| shubham |       144000 |
+| ria     |       240000 |
+| tina    |       300000 |
+| john    |       420000 |
+| sheya   |       144000 |
+| raima   |       300000 |
+| smith   |       360000 |
+| scott   |       420000 |
+| sneha   |       264000 |
+| saima   |       240000 |
+| sonam   |       276000 |
+| pratam  |       300000 |
+| raj     |       264000 |
+| neha    |       240000 |
++---------+--------------+
+15 rows in set (0.00 sec)
+
+32. WAQ for modulus operator?
+mysql> select name,salary%3 as annualsalary from employee_info;
++---------+--------------+
+| name    | annualsalary |
++---------+--------------+
+| vinay   |            0 |
+| shubham |            0 |
+| ria     |            2 |
+| tina    |            1 |
+| john    |            2 |
+| sheya   |            0 |
+| raima   |            1 |
+| smith   |            0 |
+| scott   |            2 |
+| sneha   |            1 |
+| saima   |            2 |
+| sonam   |            2 |
+| pratam  |            1 |
+| raj     |            1 |
+| neha    |            2 |
++---------+--------------+
+15 rows in set (0.00 sec)
+
+33. WAQTD all the records excluding deptno 10?
+mysql> select * from employee_info
+    -> where deptid!=10;
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 103 | ria     | ria@89    | clerk       | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 104 | tina    | tina@34   | analyst     |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john    | john@234  | tester      | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 108 | smith   | smith@34  | salesman    | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | scott   | scott@84  | salesman    | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima   | siama@99  | analyst     | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 113 | pratam  | pratam@90 | clerk       |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 114 | raj     | raj@45    | clerk       |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 115 | neha    | neha@98   | hr          |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from employee_info
+    -> where deptid<>10;
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 103 | ria     | ria@89    | clerk       | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 104 | tina    | tina@34   | analyst     |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john    | john@234  | tester      | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 108 | smith   | smith@34  | salesman    | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | scott   | scott@84  | salesman    | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima   | siama@99  | analyst     | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 113 | pratam  | pratam@90 | clerk       |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 114 | raj     | raj@45    | clerk       |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 115 | neha    | neha@98   | hr          |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+11 rows in set (0.00 sec)
+
+34. WAQTD name,designation,mobileno,age where salary is greater than 5000?
+mysql> select name,age,designation,mobileNo from employee_info
+    -> where salary>5000;
++---------+------+--------------------+-----------+
+| name    | age  | designation        | mobileNo  |
++---------+------+--------------------+-----------+
+| vinay   |   34 | software developer |   9876789 |
+| shubham |   28 | hr                 | 987690789 |
+| ria     |   23 | clerk              | 890909876 |
+| tina    |   28 | analyst            |  88908876 |
+| john    |   29 | tester             | 908907612 |
+| sheya   |   22 | hr                 |  98789789 |
+| raima   |   27 | clerk              | 890932376 |
+| smith   |   28 | salesman           | 889876576 |
+| scott   |   30 | salesman           | 890907612 |
+| sneha   |   30 | tester             |  98787861 |
+| saima   |   32 | analyst            | 809322376 |
+| sonam   |   28 | software developer |  88976543 |
+| pratam  |   27 | clerk              |  89090567 |
+| raj     |   26 | clerk              |  78989789 |
+| neha    |   29 | hr                 |  89098790 |
++---------+------+--------------------+-----------+
+15 rows in set (0.00 sec)
+
+35. WAQTD name,age,designstion,mobileno whose salary is less than 20000?
+mysql> select name,age,designation,mobileNo from employee_info
+    -> where salary<20000;
++---------+------+-------------+-----------+
+| name    | age  | designation | mobileNo  |
++---------+------+-------------+-----------+
+| shubham |   28 | hr          | 987690789 |
+| sheya   |   22 | hr          |  98789789 |
++---------+------+-------------+-----------+
+2 rows in set (0.00 sec)
+
+36. WAQTD salary <=12000 and also >=14000?
+mysql> select salary from employee_info
+    -> where salary<=12000;
++--------+
+| salary |
++--------+
+|  12000 |
+|  12000 |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select salary from employee_info
+    -> where salary>=14000;
++--------+
+| salary |
++--------+
+|  30000 |
+|  20000 |
+|  25000 |
+|  35000 |
+|  25000 |
+|  30000 |
+|  35000 |
+|  22000 |
+|  20000 |
+|  23000 |
+|  25000 |
+|  22000 |
+|  20000 |
++--------+
+13 rows in set (0.00 sec)
+
+37.WAQTD all record who is working in deptno 20 only if salary is >10000?
+mysql> select * from employee_info
+    -> where deptid=20 and salary>=10000;
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 105 | john    | john@234  | tester      | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+38.  WAQTD all the record of employee_info table who is working as salesman and DOB is 1994?
+mysql> select * from employee_info
+    -> where designation='salesman' and DOB=1994;
+Empty set, 1 warning (0.00 sec)
+
+39. WAQTD all records of employee_info table whose salary=10000 as well as job designation is analyst?
+mysql> select * from employee_info
+    -> where designation='analyst' and salary=10000;
+Empty set (0.00 sec)
+
+40. WAQTD all the records who is working in department number 20 or department number 60?
+mysql> select * from employee_info
+    -> where deptId=20 or deptId=60;
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 105 | john    | john@234  | tester      | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+41. WAQTD name,salary,emailId,who is working as a tester and or age is greater than 20?
+mysql> select name,emailId,salary from employee_info
+    -> where designation='tester' or age>20;
++---------+-----------+--------+
+| name    | emailId   | salary |
++---------+-----------+--------+
+| vinay   | vinay@123 |  30000 |
+| shubham | shubham@3 |  12000 |
+| ria     | ria@89    |  20000 |
+| tina    | tina@34   |  25000 |
+| john    | john@234  |  35000 |
+| sheya   | sheya@37  |  12000 |
+| raima   | riama@889 |  25000 |
+| smith   | smith@34  |  30000 |
+| scott   | scott@84  |  35000 |
+| sneha   | sneha@37  |  22000 |
+| saima   | siama@99  |  20000 |
+| sonam   | sonam@89  |  23000 |
+| pratam  | pratam@90 |  25000 |
+| raj     | raj@45    |  22000 |
+| neha    | neha@98   |  20000 |
++---------+-----------+--------+
+15 rows in set (0.00 sec)
+
+42. WAQTD name of all the employee who is working as a hr in deptId=30 or who is working as a clerk where salary>10000?
+mysql> select name from employee_info
+    -> where (designation='hr' and deptId=30) or (designation='clerk' and salary>10000);
++--------+
+| name   |
++--------+
+| ria    |
+| raima  |
+| pratam |
+| raj    |
+| neha   |
++--------+
+5 rows in set (0.00 sec)
+
+43. WAQTD salary =10000 and designation=softwaredeveloper?
+m
+ysql> select * from employee_info
+    -> where salary=10000 and designation='software developer';
+Empty set (0.00 sec)
+
+44. WAQTD all the records excluding deptId=20 or 30?
+mysql> select * from employee_info
+    -> where not (deptId=20 or deptId=30);
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 104 | tina  | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 106 | sheya | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 107 | raima | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 109 | scott | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 111 | saima | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 114 | raj   | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+8 rows in set (0.00 sec)
+
+45. WAQTD all employee excluding salesman who all are working in deptId=40?
+mysql> select * from employee_info
+    -> where not (designation='salesman' and deptId=40);
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay   | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 102 | shubham | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 103 | ria     | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 104 | tina    | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john    | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 106 | sheya   | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 107 | raima   | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 108 | smith   | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 110 | sneha   | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima   | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam   | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam  | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 114 | raj     | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 115 | neha    | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+14 rows in set (0.00 sec)
+
+46.WAQTD all employees working as salesman for deptId=20 or 30?
+mysql> select * from employee_info
+    -> where designation='salesman' and (deptId=20 or deptId=30);
++-----+-------+----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId  | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 108 | smith | smith@34 | salesman    | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
++-----+-------+----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+1 row in set (0.04 sec)
+
+47. WAQTD all the employee working in deptId=20 only if they salary is greater than 10000 and less than 25000 including 10000 and 25000?
+mysql> select * from employee_info
+    -> where deptId=20 and (salary>=10000 and salary<=25000);
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+2 rows in set (0.00 sec)
+
+48. WAQTD all records who is working as a software developer and DOB=1994?
+mysql> select * from employee_info
+    -> where designation='software developer' and (DOB>='1993-12-31' or DOB<='1995-01-01');
++-----+-------+-----------+--------------------+----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId   | designation        | mobileNo | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+-----------+--------------------+----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay | vinay@123 | software developer |  9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 112 | sonam | sonam@89  | software developer | 88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
++-----+-------+-----------+--------------------+----------+------+------------+------------+--------+--------+------------+
+2 rows in set (0.00 sec)
+
+49. WAQTD the employee who is working in deptId=10 or 20 or 30?
+mysql> select * from employee_info
+    -> where deptId=20 or deptId=30 or deptId=10;
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay   | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 102 | shubham | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 103 | ria     | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 105 | john    | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 106 | sheya   | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 107 | raima   | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 108 | smith   | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 110 | sneha   | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 112 | sonam   | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam  | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 115 | neha    | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+11 rows in set (0.00 sec)
+
+SAME QUERY USING IN OPERATOR
+mysql> select * from employee_info
+    -> where deptId in(10,20,30);
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay   | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 102 | shubham | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 103 | ria     | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 105 | john    | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 106 | sheya   | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 107 | raima   | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 108 | smith   | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 110 | sneha   | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 112 | sonam   | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam  | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 115 | neha    | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+11 rows in set (0.04 sec)
+
+50.WAQTD all details whose job designation is tester,hr and analyst?
+mysql> select * from employee_info
+    -> where designation in('tester','hr','analyst');
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 104 | tina    | tina@34   | analyst     |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john    | john@234  | tester      | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 106 | sheya   | sheya@37  | hr          |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima   | siama@99  | analyst     | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 115 | neha    | neha@98   | hr          |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+7 rows in set (0.00 sec)
+
+51. WAQTD all details who are working as a clerk in dept=20,30,40,60,70?
+mysql> select * from employee_info
+    -> where designation='clerk' and deptId in(20,30,40,60,70);
++-----+--------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name   | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+--------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 103 | ria    | ria@89    | clerk       | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 113 | pratam | pratam@90 | clerk       |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 114 | raj    | raj@45    | clerk       |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
++-----+--------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+52. WAQTD all details who are working as a clerk excluding deptId=20,30,40,60,70?
+mysql> select * from employee_info
+    -> where designation='clerk' and deptId not in(20,30,40,60,70);
++-----+-------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 107 | raima | riama@889 | clerk       | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
++-----+-------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+1 row in set (0.00 sec)
+
+53. WAQTD all the detail of employee who are working in department 20,40,60 excluding the salesman or analyst?
+mysql> select * from employee_info
+    -> where deptId in(20,40,60) and designation not in('salesman','analyst');
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 105 | john    | john@234  | tester      | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 114 | raj     | raj@45    | clerk       |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+4 rows in set (0.00 sec)
+
+54. WAQTD all the detail of emp whose salary in range of 20000 to 50000?
+mysql> select * from employee_info
+    -> where salary between 20000 and 50000;
++-----+--------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name   | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+--------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay  | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 103 | ria    | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 104 | tina   | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john   | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 107 | raima  | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 108 | smith  | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | scott  | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 110 | sneha  | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima  | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam  | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 114 | raj    | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 115 | neha   | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+--------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+13 rows in set (0.00 sec)
+
+55. WAQTD all details of emp who are hired in 2017?
+mysql> select * from employee_info
+    -> where DOJ between '2016-12-31' and '2018-01-01';
++-----+--------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name   | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+--------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 105 | john   | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 112 | sonam  | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
++-----+--------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+56. WAQTD all details of employee excluding employees who were hired in 2018?
+mysql> select * from employee_info
+    -> where DOJ not between '2018-01-01' and '2018-12-31';
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay   | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 102 | shubham | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 104 | tina    | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john    | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 107 | raima   | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 108 | smith   | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 111 | saima   | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam   | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam  | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 115 | neha    | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+10 rows in set (0.00 sec)
+
+57. WAQTD employee name,salary and deptId of all employee who is working in deptId 10 or 20 excluding employee whose salary>=15000 and salary<=50000 ?
+mysql> select name,salary,deptId from employee_info
+    -> where deptId in(10,20) and salary not between 15000 and 50000;
++---------+--------+--------+
+| name    | salary | deptId |
++---------+--------+--------+
+| shubham |  12000 |     20 |
+| sheya   |  12000 |     10 |
++---------+--------+--------+
+2 rows in set (0.00 sec)
+
+58. WAQTD insert a record in some column?
+mysql> insert into employee_info (id,name,emailId,DOB)values(116,'seema','seema@12','1997-03-12');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from employee_info;
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay   | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 102 | shubham | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 103 | ria     | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 104 | tina    | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john    | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 106 | sheya   | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 107 | raima   | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 108 | smith   | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | scott   | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 110 | sneha   | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima   | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam   | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam  | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 114 | raj     | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 115 | neha    | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
+| 116 | seema   | seema@12  | NULL               |      NULL | NULL | 1997-03-12 | NULL       |   NULL |   NULL | NULL       |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+16 rows in set (0.00 sec)
+
+59. WAQTD employee name,annual salary if designation is null?
+
+mysql> select name,salary*12 as salary from employee_info
+    -> where designation is null;
++-------+--------+
+| name  | salary |
++-------+--------+
+| seema |   NULL |
++-------+--------+
+1 row in set (0.00 sec)
+
+60. WAQTD employee name,annual salary if designation is  not null?
+mysql> select name,salary*12 as salary from employee_info
+    -> where designation is not null;
++---------+--------+
+| name    | salary |
++---------+--------+
+| vinay   | 360000 |
+| shubham | 144000 |
+| ria     | 240000 |
+| tina    | 300000 |
+| john    | 420000 |
+| sheya   | 144000 |
+| raima   | 300000 |
+| smith   | 360000 |
+| scott   | 420000 |
+| sneha   | 264000 |
+| saima   | 240000 |
+| sonam   | 276000 |
+| pratam  | 300000 |
+| raj     | 264000 |
+| neha    | 240000 |
++---------+--------+
+15 rows in set (0.00 sec)
+
+61. WAQTD all details of employee whose name starts with s?
+mysql> select * from employee_info
+    -> where name like 's%';
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 106 | sheya   | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 108 | smith   | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | scott   | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 110 | sneha   | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima   | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam   | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 116 | seema   | seema@12  | NULL               |      NULL | NULL | 1997-03-12 | NULL       |   NULL |   NULL | NULL       |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+8 rows in set (0.00 sec)
+
+62. WAQTD all detail of employee whose name contains 5 character?
+mysql> select * from employee_info
+    -> where name like '_____';
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 106 | sheya | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 107 | raima | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 108 | smith | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | scott | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 110 | sneha | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 116 | seema | seema@12  | NULL               |      NULL | NULL | 1997-03-12 | NULL       |   NULL |   NULL | NULL       |
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+9 rows in set (0.00 sec)
+
+63. WAQTD name,sal,DOB,DOJ,age whose name start with s and end with s?
+mysql> select name,salary,DOB,DOJ,age from employee_info
+    -> where name like 's%s';
+Empty set (0.00 sec)
+
+64. WAQTD all details of employee whose second character is h?
+mysql> select * from employee_info
+    -> where name like '_h%';
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 106 | sheya   | sheya@37  | hr          |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+2 rows in set (0.00 sec)
+
+65. WAQTD all details of employee where designation have atleast  two times e?
+mysql> select * from employee_info
+    -> where designation like '%e%e%';
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 105 | john  | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 110 | sneha | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 112 | sonam | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
++-----+-------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+4 rows in set (0.00 sec)
+
+66. WAQTD to select all the strings of length 5 the name start with s and second last character of string is l?
+mysql> select * from employee_info
+    -> where name like 's__l_';
+Empty set (0.00 sec)
+
+67. WAQTD all the details of employee if name of employee start with r or z character?
+mysql> select * from employee_info
+    -> where name like 'r%' or name like 'z%';
++-----+-------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 103 | ria   | ria@89    | clerk       | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 107 | raima | riama@889 | clerk       | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 114 | raj   | raj@45    | clerk       |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
++-----+-------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+68. WAQTD all details of employee whose name 3rd character should be c and 6th should be i?
+mysql> select * from employee_info
+    -> where name like '__c__i%';
+empty set
+
+69. WAQTD all details of employee excluding whose name starts with r?
+mysql> select * from employee_info
+    -> where name not like 'r%';
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay   | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 102 | shubham | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  12000 |     20 | B+         |
+| 104 | tina    | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 105 | john    | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 106 | sheya   | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 108 | smith   | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | scott   | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 110 | sneha   | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 111 | saima   | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam   | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam  | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 115 | neha    | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
+| 116 | seema   | seema@12  | NULL               |      NULL | NULL | 1997-03-12 | NULL       |   NULL |   NULL | NULL       |
++-----+---------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+13 rows in set (0.00 sec)
+
+70. WAQTD the avg salary of employee?
+mysql> select avg(salary) from employee_info;
++-------------+
+| avg(salary) |
++-------------+
+|  23733.3333 |
++-------------+
+1 row in set (0.05 sec)
+
+71. WAQTD the min,max,sum of all the salary of employee?
+mysql> select min(salary),max(salary),sum(salary) from employee_info;
++-------------+-------------+-------------+
+| min(salary) | max(salary) | sum(salary) |
++-------------+-------------+-------------+
+|       12000 |       35000 |      356000 |
++-------------+-------------+-------------+
+1 row in set (0.04 sec)
+
+72. WAQTD to count the salary of employees?
+mysql> select count(salary) from employee_info;
++---------------+
+| count(salary) |
++---------------+
+|            15 |
++---------------+
+1 row in set (0.00 sec)
+
+73.WAQTD number of employees having the DOJ after 2016
+mysql> use ust;
+Database changed
+mysql> select count(*) from employee_info
+    -> where DOJ>='2016-12-31';
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+1 row in set (0.06 sec)
+
+74. WAQTD average sal and heighest sal of deptId 20,30,40,60?
+mysql> select avg(salary),max(salary) from employee_info
+    -> where deptId in(20,30,40,60);
++-------------+-------------+
+| avg(salary) | max(salary) |
++-------------+-------------+
+|  24181.8182 |       35000 |
++-------------+-------------+
+1 row in set (0.03 sec)
+
+75. WAQTD all details of employees whose dates are 1st and last hired employee?
+mysql> select min(DOJ) as firstemployee,max(DOJ) as lastemployee from employee_info;
++---------------+--------------+
+| firstemployee | lastemployee |
++---------------+--------------+
+| 2005-09-08    | 2018-12-23   |
++---------------+--------------+
+1 row in set (0.03 sec)
+
+76. WAQTD saclar function upper?
+mysql> select upper(name) from employee_info;
++---------------+
+| upper(name)   |
++---------------+
+| VINAY         |
+| SHUBHAM       |
+| RIA           |
+| TINA          |
+| JOHN          |
+| SHEYA         |
+| RAIMA SHETTEE |
+| SMITH         |
+| SCOTT         |
+| SNEHA         |
+| SAIMA         |
+| SONAM SINGH   |
+| PRATAM        |
+| RAJ           |
+| NEHA          |
+| SEEMA         |
++---------------+
+16 rows in set (0.06 sec)
+
+77. WAQTD scalar function lower?
+mysql> select lower(name) from employee_info;
++---------------+
+| lower(name)   |
++---------------+
+| vinay         |
+| shubham       |
+| ria           |
+| tina          |
+| john          |
+| sheya         |
+| raima shettee |
+| smith         |
+| scott         |
+| sneha         |
+| saima         |
+| sonam singh   |
+| pratam        |
+| raj           |
+| neha          |
+| seema         |
++---------------+
+16 rows in set (0.03 sec)
+
+78. WAQTD scalar function length?
+mysql> select length(name) from employee_info;
++--------------+
+| length(name) |
++--------------+
+|            5 |
+|            7 |
+|            3 |
+|            4 |
+|            4 |
+|            5 |
+|           13 |
+|            5 |
+|            5 |
+|            5 |
+|            5 |
+|           11 |
+|            6 |
+|            3 |
+|            4 |
+|            5 |
++--------------+
+16 rows in set (0.04 sec)
+
+79. WAQTD to merge name and salary?
+mysql> select concat(name,salary) from employee_info;
++---------------------+
+| concat(name,salary) |
++---------------------+
+| vinay30000          |
+| shubham12000        |
+| ria20000            |
+| tina25000           |
+| john35000           |
+| sheya12000          |
+| raima shettee25000  |
+| smith30000          |
+| scott35000          |
+| sneha22000          |
+| saima20000          |
+| sonam singh23000    |
+| pratam25000         |
+| raj22000            |
+| neha20000           |
+| NULL                |
++---------------------+
+16 rows in set (0.00 sec)
+
+80. WAQTD scalar function reverse?
+mysql> select reverse(name) from employee_info;
++---------------+
+| reverse(name) |
++---------------+
+| yaniv         |
+| mahbuhs       |
+| air           |
+| anit          |
+| nhoj          |
+| ayehs         |
+| eettehs amiar |
+| htims         |
+| ttocs         |
+| ahens         |
+| amias         |
+| hgnis manos   |
+| matarp        |
+| jar           |
+| ahen          |
+| amees         |
++---------------+
+16 rows in set (0.00 sec)
+
+81. WAQTD the name of all employee only 3 character?
+mysql> select substr(name,1,3) from employee_info;
++------------------+
+| substr(name,1,3) |
++------------------+
+| vin              |
+| shu              |
+| ria              |
+| tin              |
+| joh              |
+| she              |
+| rai              |
+| smi              |
+| sco              |
+| sne              |
+| sai              |
+| son              |
+| pra              |
+| raj              |
+| neh              |
+| see              |
++------------------+
+16 rows in set (0.03 sec)
+
+82. WAQTD all the details of employee whose name begin with consonant?
+mysql> select name from employee_info
+    -> where substr(name,1,1) not in ('a','e','i','o','u');
++---------------+
+| name          |
++---------------+
+| vinay         |
+| shubham       |
+| ria           |
+| tina          |
+| john          |
+| sheya         |
+| raima shettee |
+| smith         |
+| scott         |
+| sneha         |
+| saima         |
+| sonam singh   |
+| pratam        |
+| raj           |
+| neha          |
+| seema         |
++---------------+
+16 rows in set (0.03 sec)
+
+83. WAQTD search the position of  'A' in name column?
+mysql> select instr(name,'a') from employee_info;
++-----------------+
+| instr(name,'a') |
++-----------------+
+|               4 |
+|               6 |
+|               3 |
+|               4 |
+|               0 |
+|               5 |
+|               3 |
+|               0 |
+|               0 |
+|               5 |
+|               3 |
+|               4 |
+|               3 |
+|               2 |
+|               4 |
+|               5 |
++-----------------+
+16 rows in set (0.00 sec)
+
+84. WAQTD to replace where a is present in the name with j?
+mysql> select replace(name,'a','j') from employee_info;
++-----------------------+
+| replace(name,'a','j') |
++-----------------------+
+| vinjy                 |
+| shubhjm               |
+| rij                   |
+| tinj                  |
+| john                  |
+| sheyj                 |
+| rijmj shettee         |
+| smith                 |
+| ili scott             |
+| snehj                 |
+| sijmj                 |
+| sonjm                 |
+| prjtjm                |
+| rjj                   |
+| nehj                  |
+| seemj                 |
++-----------------------+
+16 rows in set (0.00 sec)
+
+85. WAQTD number of employee who is working in deptId=20 and salary=15000?
+mysql>  select count(*) from employee_info
+    -> where deptId=20 and salary=15000;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+86. WAQTD heighest salary of employee in each department?
+mysql> select max(salary) as heighestsal from employee_info
+    -> group by deptId;
++-------------+
+| heighestsal |
++-------------+
+|        NULL |
+|       30000 |
+|       35000 |
+|       30000 |
+|       35000 |
++-------------+
+5 rows in set (0.00 sec)
+
+87. WAQTD number of software developer working in each dept?
+mysql> select count(*) from employee_info
+    -> where designation='software developer'
+    -> group by deptId;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+88. WAQTD number of employee hired on each date?
+mysql> select count(*) from employee_info
+    -> group by DOJ;
++----------+
+| count(*) |
++----------+
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
++----------+
+16 rows in set (0.00 sec)
+
+89. WAQTD minimum salary in each designation?
+mysql> select min(salary) as minsal from employee_info
+    -> group by designation;
++--------+
+| minsal |
++--------+
+|   NULL |
+|  20000 |
+|  20000 |
+|  12000 |
+|  30000 |
+|  23000 |
+|  22000 |
++--------+
+7 rows in set (0.00 sec)
+
+90. WAQTD to display deptId which has atleast 4 working employees?
+mysql> select deptId from employee_info
+    -> group by deptId having count(*)>=4;
++--------+
+| deptId |
++--------+
+|     10 |
+|     30 |
+|     40 |
++--------+
+3 rows in set (0.00 sec)
+
+91. WAQTD deptId which has total salary>20000?
+mysql> select deptId from employee_info
+    -> group by deptId having sum(salary)>30000;
++--------+
+| deptId |
++--------+
+|     10 |
+|     20 |
+|     30 |
+|     40 |
++--------+
+4 rows in set (0.00 sec)
+
+92. WAQTD deptID and avg salary of all the dept whose avg sal >20000 excluding the employee whose name begins with 's'?
+mysql> select deptId,avg(salary) from employee_info
+    -> where name not like 's%' group by deptId having avg(salary)>20000;
++--------+-------------+
+| deptId | avg(salary) |
++--------+-------------+
+|     10 |  27500.0000 |
+|     20 |  35000.0000 |
+|     30 |  21666.6667 |
+|     40 |  27333.3333 |
++--------+-------------+
+4 rows in set (0.00 sec)
+
+93. WAQTD all the results of employee_info table salary should be arranged in descending order?
+mysql> select * from employee_info
+    -> order by salary DESC;
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name          | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 109 | ili scott     | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 105 | john          | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 101 | vinay         | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 108 | smith         | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 104 | tina          | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 107 | riama shettee | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 113 | pratam        | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 112 | sonam         | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 114 | raj           | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 110 | sneha         | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 115 | neha          | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
+| 111 | siama         | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 103 | ria           | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 102 | shubham       | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  15000 |     20 | B+         |
+| 106 | sheya         | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 116 | seema         | seema@12  | NULL               |      NULL | NULL | 1997-03-12 | NULL       |   NULL |   NULL | NULL       |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+16 rows in set (0.00 sec)
+
+94.ascending order?
+mysql> select * from employee_info
+    -> order by salary;
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name          | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 116 | seema         | seema@12  | NULL               |      NULL | NULL | 1997-03-12 | NULL       |   NULL |   NULL | NULL       |
+| 106 | sheya         | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 102 | shubham       | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  15000 |     20 | B+         |
+| 103 | ria           | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 111 | siama         | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 115 | neha          | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
+| 110 | sneha         | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 114 | raj           | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 112 | sonam         | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     10 | B-         |
+| 113 | pratam        | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 104 | tina          | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 107 | riama shettee | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 101 | vinay         | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 108 | smith         | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 105 | john          | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 109 | ili scott     | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+16 rows in set (0.00 sec)
+
+95. WAQTD name,designation,DOJ for all emp who are working in either any of the deptId=10,20,50,60 and sort the records in descending order of salary?
+mysql> select name,designation,DOJ from employee_info
+    -> where deptId in(10,20,50,60)
+    -> order by salary DESC;
++---------------+--------------------+------------+
+| name          | designation        | DOJ        |
++---------------+--------------------+------------+
+| john          | tester             | 2017-02-23 |
+| vinay         | software developer | 2005-09-08 |
+| riama shettee | clerk              | 2016-09-21 |
+| sneha         | tester             | 2018-12-23 |
+| shubham       | hr                 | 2010-01-01 |
+| sheya         | hr                 | 2018-02-06 |
++---------------+--------------------+------------+
+6 rows in set (0.29 sec)
+
+96. WAQTD deptId along with number of employee in it?
+mysql> select deptId,count(*) from employee_info
+    -> group by deptId;
++--------+----------+
+| deptId | count(*) |
++--------+----------+
+|   NULL |        1 |
+|     10 |        3 |
+|     20 |        3 |
+|     30 |        4 |
+|     40 |        5 |
++--------+----------+
+5 rows in set (0.00 sec)
+
+97. WAQTD all the detail of employee whose designation is software developer and tester?
+select * from employee_info
+where designation in ('tester','software developer')
+
+98. WAQTD name of the employee who is working for research department?
+select name from employee_info where deptId = (select deptId from department_info where dname='research')
+shubham
+
+john
+
+sneha
+
+99. WAQTD name of employee who is working in location which has atleast one 'a' character in its name?
+select name from employee_info where deptId in (select deptId from department_info where location like '%a%')
+
+100. WAQTD to obtain second max sal from the employee_info table?
+select max(salary) from employee_info where salary< (select max(salary) from employee_info)
+
+101. WAQTD the third max salary?
+select max(salary) from employee_info where salary< (select max(salary) from employee_info where salary<(select max(salary) from employee_info))
+
+102. WAQTD all records using cartesian or cross join?
+select * from employee_info cross join department_info
+
+103. WAQTD all records through inner join?
+select * from Employee_info inner join department_info on employee_info.deptId=department_info.deptid
+
+104. WAQTD all records through left outer join?
+select * from employee_info left outer join department_info on employee_info.deptId=department_info.deptid
+
+105. WAQTD all records through right outer join?
+select * from employee_info right outer join department_info on employee_info.deptId=department_info.deptid
+
+106. WAQTD all records with outer join?
+select * from employee_info left outer join department_info on employee_info.deptId=department_info.deptid union select * from employee_info right outer join department_info on employee_info.deptId=department_info.deptid
+
+107. view query
+
+CREATE
+   VIEW `ust`.`Emp1` 
+    AS
+    select * from employee_info where designation='software developer' and deptId=10;
+select * from Emp1;
+
+update Emp1 set designation='tester' where deptId=10;
+
+select * from employee_info;
+
+108. insert first then commit then rollback;
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.02 sec)
+mysql> insert into department_info values (80,'bpo','mumbai');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from department_info;
++--------+--------------+-----------+
+| deptid | dname        | location  |
++--------+--------------+-----------+
+|     10 | accounting   | bangalore |
+|     20 | research     | pune      |
+|     30 | sales        | new delhi |
+|     40 | operation    | chennai   |
+|     50 | admin        | mumbai    |
+|     60 | maintainance | goa       |
+|     70 | bpo          | bangalore |
+|     80 | bpo          | mumbai    |
++--------+--------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from department_info;
++--------+--------------+-----------+
+| deptid | dname        | location  |
++--------+--------------+-----------+
+|     10 | accounting   | bangalore |
+|     20 | research     | pune      |
+|     30 | sales        | new delhi |
+|     40 | operation    | chennai   |
+|     50 | admin        | mumbai    |
+|     60 | maintainance | goa       |
+|     70 | bpo          | bangalore |
++--------+--------------+-----------+
+7 rows in set (0.00 sec)
+
+//After giving command of set autocommit=1 it wont rollback//
+mysql> insert into department_info values (80,'bpo','mumbai');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from department_info;
++--------+--------------+-----------+
+| deptid | dname        | location  |
++--------+--------------+-----------+
+|     10 | accounting   | bangalore |
+|     20 | research     | pune      |
+|     30 | sales        | new delhi |
+|     40 | operation    | chennai   |
+|     50 | admin        | mumbai    |
+|     60 | maintainance | goa       |
+|     70 | bpo          | bangalore |
+|     80 | bpo          | mumbai    |
++--------+--------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> set autocommit=1;
+Query OK, 0 rows affected (0.04 sec)
+
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from department_info;
++--------+--------------+-----------+
+| deptid | dname        | location  |
++--------+--------------+-----------+
+|     10 | accounting   | bangalore |
+|     20 | research     | pune      |
+|     30 | sales        | new delhi |
+|     40 | operation    | chennai   |
+|     50 | admin        | mumbai    |
+|     60 | maintainance | goa       |
+|     70 | bpo          | bangalore |
+|     80 | bpo          | mumbai    |
++--------+--------------+-----------+
+8 rows in set (0.00 sec)
+
+109. STORED PROCEDURES
+DELIMITER $$
+
+CREATE
+    PROCEDURE `ust`.`st1`()
+   
+    BEGIN
+	select * from employee_info where designation='tester';
+    END$$
+
+DELIMITER ;

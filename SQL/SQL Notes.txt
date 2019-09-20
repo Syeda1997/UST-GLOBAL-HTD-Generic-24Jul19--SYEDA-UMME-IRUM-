@@ -1,0 +1,183 @@
+INNER JOIN :
+joining two tables with the help of join column is known as inner join 
+
+Syntax : select * from table Idle table1 inner join table2 on condition;
+select * from table2 , table where condition
+
+OUTER JOIN :
+There are three types of outer joins
+i. left outer join
+ii.right outer join
+iii.full outer join
+
+i.LEFT OUTER JOIN :  
+*.left outerjoin gives inner join plus unmatched (The record do not have pairing the opposite table with respect to joins) record of left table.
+	T1		T2			table
+          A             B	         A1         B1		A          B           A1       B1
+          a             20	         b            10               =>       a           20        null        null
+          b             30	         e             20		b          30          b           10
+          c             10				c          10        null         null
+
+
+Syntax : select * from t1 left outer join t2 on condition(mySQL)
+             select * from t1,t2 where t1.columnname=t2.columnname(+)
+
+ii.RIGHT OUTER JOIN :
+*.right outerjoin gives inner join plus unmatched (The record do not have pairing the opposite table with respect to joins) record of right table.
+	T1		T2			table
+          A             B	         A1         B1		A          B           A1       B1
+          a             20	         b            10               =>       b          30          b           10
+          b             30	         e             20		null      null          e           20
+          c             10				
+
+
+Syntax : select * from t1 right outer join t2 on condition(mySQL)
+             select * from t1,t2 where t1.columnname=t2.columnname
+
+iii. FULL OUTER JOIN :
+*.combination of inner join, right outer join and left outer join 
+*.outer join gives inner join as well as all records from both the table who do not have any pair
+*.we dont have syntax to perform outer join so we will be performing with some operations like UNION, INTERSECTION
+
+KEYs IN RDBMS :
+KEY ATTRIBUTES :
+*. A key attribute is used to find an attribute using which we can uniquely determine a record in a table
+
+NON KEY ATTRIBUTES :
+*. All the attributes except key attributes are known as non key attributes.
+
+PRIME KEY ATTRIBUTES :
+*. A key attributes which is choosen to be a main attributes to determine the record unity in the table.
+
+NON PRIME KEY ATTRIBUTES :
+*. A key attributes other than main attributes
+
+COMPOSITE KEY :
+*. The combination of two or more attributes which determines a record uniquely is known as composite key attribute.
+
+FOREIGN KEY :
+*. it's a key which is present in child table
+*. it belongs to the parent table
+*. it can have duplicate and null values.
+*. it is used to relate two tables.
+
+FUNCTIONAL DEPENDENCY :
+In a functional dependency, a relation exist such that a attribute determines another attributes uniquely is known as functional dependency.
+R=>{x,y} x is determinant , y is dependent
+
+TYPES OF FUNCTION DEPENDENCIES :
+1. Total functional dependency.
+2. Partial Functional dependency.
+3. Transitive Functional dependency.
+
+1. TOTAL FUNCTIONAL DEPENDENCY :
+*. All the attributes of a relation is determined by a key attribute is known as totally functional dependency.
+R=>{a,b,c,d} 
+a->c,a->b,a->d all are dependent on a.
+
+2. PARTIAL FUNCTIONAL DEPENDENCY :
+*. Relation is said to have partial functional dependency 
+	i. if it consists of composite attributes
+	ii. they existences dependency such that an attribute can be determine by another attribute which is the part of composite key.
+R=>{a,b,c,d}
+(a,b)->(c,d) (a,b) is a composite key.
+(a,b)->c
+(a,b)->d
+a->c
+
+3. TRANSITIVE FUNCTIONAL DEPENDENCY :
+*. A relational to be a Transitive FD if they exist an relation such that an attribute is determined by non key attribute which in term is determine by key attributes.
+a->b,b->c=>a->c
+
+NORMALIZATION :
+*. Redundancy : Repetation to over this drawback we use normalization.
+*. Anamoly : the sideeffect which occur during performance of DML operations. Types of anamoly are insert,delete,update
+*. The process of decomposing the table into smaller table in order to remove redundancy and anamolies by identifying FD is known as NORMALIZATION.
+OR
+*. The process of reducing the table into normal form is known as NORMALIZATION.
+
+NORMAL FORM :
+*. A state of table without the table redundancies and anamolies is known as normal form.
+
+TYPES OF NORMAL FORMS :
+i. First NF
+ii. Second NF
+iii. Third NF
+iv.VCNL/BCNF(doubt)
+v. Fourth NF
+
+i. First NF :
+A table is said to be in the first NF if  it satisfies the following condition
+	i. Table should not have duplicate rows.
+	ii. Every cell in the table should be single value.
+
+ii. Second NF :
+A table is said to be second NF if it satisfies the following condition
+	i. The table should be in First NF.
+	ii. The table should not have partial FD (Composite Key)
+NOTE: If the table consist partial FD the attribute which are responsible are removed from the table.
+
+iii. Third NF :
+A table is said to be third NF if it satisfies the following condition
+	i. It should follow the second NF.
+	ii. The table should not have transitive FD
+NOTE:  First NF, Second NF and third NF are based on key attributes and FD of relational scehema.
+
+//FUNCTIONs like numbers round off etc....prepare????????//
+
+ER diagram:
+*. It is a entity relationship diagram describe the structure of DB with the help of diagram which is known as ER diagram.
+*. It is a blueprint of DB that can later be implemented as DB.
+
+COMPONENT OF ER DIAGRAM :
+1. Entity=>  Rectangle
+2. Attribute=> Ellipse
+3. Relationship=> Rhombus
+*. Single line link attributes to entity sets and entity sets to relationships
+
+TYPES OF RELATIONSHIPS :
+1. 1 to 1
+2. 1 to many
+3. many to 1
+4. many to many
+
+VIEWS :
+*. View are logical or virtual tables that can be created on existing table.
+*. View do not occupy memory.
+syntax: create view viewname
+           select * from tablename;
+NOTE: any dml operation performed on view it will get reflected to the original table/base table
+
+TRANSACTION CONTROL LANGUAGE (TCL) :
+1. Rollback (Undo) :
+to perform rollback we need to autocommit first
+ set autocommit=0; or  (set autocommit=1; if we give 1 it wont rollback because the permanent changes are saved)
+Syntax : rollback;
+
+2. Commit
+Syntax:  set autocommit=0; or  (set autocommit=1;)
+
+3. Savepoint
+*. It is very work with rollback
+HOW TO CREATE SAVEPOINT: savepoint anyname
+			then perform any operation i.e., update delete or insert
+			again create savepoint with operation
+			then rollback to the first savepoint
+
+STORED PROCEDURE :
+*. To write the query n number of times we need to create the stored procedure.
+*. A stored procedure is a collection or group of SQL statements, stored in the databases's data dictionary and called from either a remote program, another stored procedure or the command line.
+OR
+*. A stored procedure is a prepared SQL code that you can save, so the code can be reused over  again and over again
+*. Stored procedure's are commonly called SP's
+*. Stored procedures DB are based on DB engines
+
+SYNTAX: DELIMITER $$
+	Create procedure <procedure Name>
+	As
+	Begin
+	<SQL statement>;
+	End $$
+	DELIMITER;
+to call a stored procedure : call stored procedure name;
+

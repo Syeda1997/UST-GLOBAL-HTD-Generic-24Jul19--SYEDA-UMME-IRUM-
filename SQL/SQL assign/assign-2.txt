@@ -1,0 +1,123 @@
+ASSIGNMENT 2:
+
+1 WAQTD all details of software developer of deptId=30?
+mysql> select * from employee_info
+    -> where designation='software developer' and deptId=30;
+Empty set (0.00 sec)
+
+2.WAQTD the list for all the software developer in deptId=40 and salary having greater than 5000?
+mysql> select * from employee_info
+    -> where designation='software developer' and deptId=40 and salary>=5000;
++-----+-------+----------+--------------------+----------+------+------------+------------+--------+--------+------------+
+| id  | name  | emailId  | designation        | mobileNo | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-------+----------+--------------------+----------+------+------------+------------+--------+--------+------------+
+| 112 | sonam | sonam@89 | software developer | 88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     40 | B-         |
++-----+-------+----------+--------------------+----------+------+------------+------------+--------+--------+------------+
+1 row in set (0.00 sec)
+
+3. WAQTD all the employees except those who are working in dept 10 & 20?
+mysql> select * from employee_info
+    -> where deptId not in(10,20);
++-----+-----------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name      | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+-----------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 103 | ria       | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 104 | tina      | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 108 | smith     | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 109 | ili scott | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 111 | siama     | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 112 | sonam     | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     40 | B-         |
+| 113 | pratam    | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 114 | raj       | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 115 | neha      | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
++-----+-----------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+9 rows in set (0.00 sec)
+
+4. WAQTD details of employees who are not working as software developer and clerks in dept 10 and 20 with a salary in the range of 10000 to 30000?
+mysql> select * from employee_info
+    -> where designation not in('software developer','clerk') and deptId in(10,20) and salary between 10000 and 30000;
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name    | emailId   | designation | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+| 102 | shubham | shubham@3 | hr          | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  15000 |     20 | B+         |
+| 106 | sheya   | sheya@37  | hr          |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 110 | sneha   | sneha@37  | tester      |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
++-----+---------+-----------+-------------+-----------+------+------------+------------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+5.WAQTD the list of employees whose salary is not in range of 10000 to 20000 in dept 10,20,30 except all salesman?
+mysql> select * from employee_info
+    -> where salary not between 10000 and 20000 and deptId in(10,20,30) and designation!='salesman';
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name          | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 101 | vinay         | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 105 | john          | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 107 | riama shettee | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 110 | sneha         | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 113 | pratam        | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+5 rows in set (0.11 sec)
+
+6.WAQTD arrange all the employees by their salary in descending order?
+mysql> select * from employee_info
+    -> order by salary desc;
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| id  | name          | emailId   | designation        | mobileNo  | age  | DOB        | DOJ        | salary | deptId | Bloodgroup |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+| 109 | ili scott     | scott@84  | salesman           | 890907612 |   30 | 1989-03-22 | 2018-03-13 |  35000 |     40 | B+         |
+| 105 | john          | john@234  | tester             | 908907612 |   29 | 1992-09-16 | 2017-02-23 |  35000 |     20 | O-         |
+| 101 | vinay         | vinay@123 | software developer |   9876789 |   34 | 1984-02-02 | 2005-09-08 |  30000 |     10 | A+         |
+| 108 | smith         | smith@34  | salesman           | 889876576 |   28 | 1995-09-25 | 2010-08-03 |  30000 |     30 | AB-        |
+| 104 | tina          | tina@34   | analyst            |  88908876 |   28 | 1995-06-07 | 2016-09-04 |  25000 |     40 | B-         |
+| 107 | riama shettee | riama@889 | clerk              | 890932376 |   27 | 1994-04-22 | 2016-09-21 |  25000 |     10 | AB+        |
+| 113 | pratam        | pratam@90 | clerk              |  89090567 |   27 | 1994-04-24 | 2017-09-16 |  25000 |     30 | O+         |
+| 112 | sonam         | sonam@89  | software developer |  88976543 |   28 | 1995-02-24 | 2017-09-08 |  23000 |     40 | B-         |
+| 114 | raj           | raj@45    | clerk              |  78989789 |   26 | 1993-08-26 | 2018-08-26 |  22000 |     40 | A+         |
+| 110 | sneha         | sneha@37  | tester             |  98787861 |   30 | 1987-05-22 | 2018-12-23 |  22000 |     20 | O+         |
+| 115 | neha          | neha@98   | hr                 |  89098790 |   29 | 1992-08-20 | 2010-11-23 |  20000 |     30 | O-         |
+| 111 | siama         | siama@99  | analyst            | 809322376 |   32 | 1982-07-28 | 2016-10-02 |  20000 |     40 | A+         |
+| 103 | ria           | ria@89    | clerk              | 890909876 |   23 | 1996-09-09 | 2018-07-12 |  20000 |     30 | O+         |
+| 102 | shubham       | shubham@3 | hr                 | 987690789 |   28 | 1991-05-12 | 2010-01-01 |  15000 |     20 | B+         |
+| 106 | sheya         | sheya@37  | hr                 |  98789789 |   22 | 1998-03-12 | 2018-02-06 |  12000 |     10 | A+         |
+| 116 | seema         | seema@12  | NULL               |      NULL | NULL | 1997-03-12 | NULL       |   NULL |   NULL | NULL       |
++-----+---------------+-----------+--------------------+-----------+------+------------+------------+--------+--------+------------+
+16 rows in set (0.00 sec)
+
+7. WAQTD min,max and total salary of employees?
+mysql> select min(salary),max(salary),sum(salary) from employee_info;
++-------------+-------------+-------------+
+| min(salary) | max(salary) | sum(salary) |
++-------------+-------------+-------------+
+|       12000 |       35000 |      359000 |
++-------------+-------------+-------------+
+1 row in set (0.05 sec)
+
+8. WAQTD the list of number of software developer in department 20?
+mysql> select * from employee_info
+    -> where designation='software developer' and deptId=20;
+Empty set (0.00 sec)
+
+9. WAQTD the list of the highest and lowest salary earned by salesman?
+mysql> select max(salary),min(salary) from employee_info
+    -> where designation='salesman';
++-------------+-------------+
+| max(salary) | min(salary) |
++-------------+-------------+
+|       35000 |       30000 |
++-------------+-------------+
+1 row in set (0.00 sec)
+
+10. WAQTD  the total salary of all departments?
+mysql> select sum(salary) from employee_info
+    -> group by deptId;
++-------------+
+| sum(salary) |
++-------------+
+|        NULL |
+|       67000 |
+|       72000 |
+|       95000 |
+|      125000 |
++-------------+
+5 rows in set (0.11 sec)
