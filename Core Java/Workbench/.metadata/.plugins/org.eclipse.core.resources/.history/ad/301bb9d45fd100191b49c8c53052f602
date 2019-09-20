@@ -1,0 +1,26 @@
+package com.dev.test;
+
+public class EmpData {
+
+	public static void main(String[] args) {
+		
+		ImpInt im=new ImpInt();
+		Employee e=new Employee();
+		e.setEmpid(101);
+		e.setEname("syeda");
+		e.setEmail("Syeda@gmail.com");
+		e.setPassword("12345");
+		e.setSalary(20000.00);
+
+		Employee e1=new Employee();
+		e1.setEmpid(102);
+		e1.setEname("riya");
+		e1.setEmail("riya@yahoo.com");
+		e1.setPassword("67890");
+		e1.setSalary(24000.00);
+		
+		im.insertEmp("1", e);
+		im.insertEmp("2", e1);
+	}
+
+}

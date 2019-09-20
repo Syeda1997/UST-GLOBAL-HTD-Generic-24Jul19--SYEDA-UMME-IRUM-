@@ -1,0 +1,27 @@
+package com.dev.threads;
+
+public class MainThreadClass {
+
+	public static void main(String[] args) {
+		System.out.println("Main thread starts...");
+		
+//		new T2().start(); 
+		Thread2 t=new Thread2();
+		t.setName("Thread2");
+		t.start();
+		Thread.currentThread().setName("Main Thread");
+		
+		new Thread(new Thread3()).start();
+		
+		Thread3 t3 =new Thread3();
+		
+		
+		for(int i=1; i<=10; i++) {
+			System.out.println("i = " +i);
+		}
+		System.out.println("Thread Name: "+Thread.currentThread().getName());
+		System.out.println("Thread Name: "+t.getName());
+		System.out.println("Main thread Ends...");
+	}
+
+}

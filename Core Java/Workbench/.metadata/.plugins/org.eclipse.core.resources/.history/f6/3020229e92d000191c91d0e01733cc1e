@@ -1,0 +1,36 @@
+package com.dev.collections;
+
+import java.util.HashSet;
+
+public interface Emp {
+	
+	HashSet<Employees> hs=new HashSet<Employees>();
+	public static String addEmp() {
+		boolean b1=hs.add(e);
+		boolean b2=hs.add(e1);
+		boolean b3=hs.add(e2);
+		System.out.println("HashSet is: " +b1+ " " +b2+ " " +b3);
+		return hs;
+		
+		
+	}
+	public static String removeEmp() {
+		hs.remove(e1);
+		return null;
+		
+	}
+	public static String updateEmp() {
+		e.setEmail("sy@gmail.com");
+		e1.setEmail("ummeirum@yahoo.com");
+		e2.setEmail("mathur@gmail.com");
+		return null;
+		
+	}
+	public static String deleteEmp() {
+		hs.clear();
+		return null;
+		
+	}
+	
+
+}

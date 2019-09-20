@@ -1,0 +1,16 @@
+package com.dev.threads;
+
+public class MainThread {
+
+	public static void main(String[] args) {
+		
+		
+		Name1 n=new Name1();
+		Thread5 t5=new Thread5(n);
+		t5.start();
+		t5.join();
+		new Thread4(n).start();
+
+	}
+
+}

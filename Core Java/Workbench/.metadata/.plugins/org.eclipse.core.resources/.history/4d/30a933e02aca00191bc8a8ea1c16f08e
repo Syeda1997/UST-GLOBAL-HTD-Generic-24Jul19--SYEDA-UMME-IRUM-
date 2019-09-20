@@ -1,0 +1,10 @@
+package com.dev.methods;
+
+import com.dev.encapsulation.Dogs;
+//import statements for same class name cannot be given instead we use fully qualified class and create the object 
+
+public class Demo {
+	Dogs d = new Dogs();
+	com.dev.constructors.Dogs d1=new com.dev.constructors.Dogs();
+
+}

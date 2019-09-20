@@ -1,0 +1,37 @@
+package com.dev.collections;
+
+import java.util.HashMap;
+
+public class ImpInt implements StuInt{
+	
+	HashMap<String,Students> hm=new HashMap<String,Students>();
+
+	@Override
+	public Students addStu(String k, Students s) {
+		if(s!=null) {
+			hm.put(k,s);
+			if(s!=null) {
+				Students r=hm.put(k,s);
+			}
+			return s;
+		}
+		return null;
+	}
+
+	@Override
+	public Students getStu() {
+		System.out.println(hm);
+		return null;
+	}
+
+	@Override
+	public Students remStu(String k, Students s) {
+		Students z=hm.remove("2");
+		System.out.println(z);
+		System.out.println(hm);
+		return z;
+		
+	}
+
+	
+}

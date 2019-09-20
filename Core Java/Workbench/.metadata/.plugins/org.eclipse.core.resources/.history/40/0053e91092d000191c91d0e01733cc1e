@@ -1,0 +1,23 @@
+package com.dev.collections;
+
+public interface Emp {
+	
+	public static String addEmp() {
+		return null;
+		
+	}
+	public static String removeEmp() {
+		return null;
+		
+	}
+	public static String updateEmp() {
+		return null;
+		
+	}
+	public static String deleteEmp() {
+		return null;
+		
+	}
+	
+
+}

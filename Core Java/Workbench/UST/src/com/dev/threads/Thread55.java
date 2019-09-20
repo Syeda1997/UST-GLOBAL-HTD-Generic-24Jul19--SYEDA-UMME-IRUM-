@@ -1,0 +1,21 @@
+package com.dev.threads; 
+
+public class Thread55 extends Thread {
+	
+	Name1 n;
+	
+	public Thread55(Name1 nref) {
+		n=nref;
+	}
+	
+	@Override
+	public void run() {
+		try {
+			Thread.currentThread().sleep(500);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		n.printVal(10, "Thread 5");
+	}
+
+}

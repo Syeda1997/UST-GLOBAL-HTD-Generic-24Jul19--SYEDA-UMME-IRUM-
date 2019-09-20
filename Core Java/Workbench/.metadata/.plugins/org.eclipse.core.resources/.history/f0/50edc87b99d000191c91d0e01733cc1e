@@ -1,0 +1,29 @@
+package com.dev.collections;
+
+import java.util.HashMap;
+
+public class IntImp implements EmpInt {
+
+	public static void main(String[] args) {
+		
+		HashMap<String,Employees> hm=new HashMap<String,Employees>();
+		
+
+	}
+
+	@Override
+	public boolean putEmp(Employees e) {
+		if(e!=null) {
+			hm.put(e);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void getEmp() {
+		System.out.println(hm);
+		
+	}
+
+}

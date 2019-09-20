@@ -1,0 +1,5 @@
+package com.dev.collections;
+
+public interface Emp {
+
+}

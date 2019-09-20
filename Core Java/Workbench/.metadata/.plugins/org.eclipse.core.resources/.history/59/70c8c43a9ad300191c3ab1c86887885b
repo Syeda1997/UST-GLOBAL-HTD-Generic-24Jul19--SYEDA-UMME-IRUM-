@@ -1,0 +1,21 @@
+package com.dev.threads;
+
+public class T3 implements Runnable {
+
+		@Override
+		public void run() {
+			System.out.println("Runnable interface");
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			System.out.println("Runnbale interface ends");
+			
+		}
+		
+	}

@@ -1,0 +1,30 @@
+package com.dev.threads;
+
+public class Thread5 extends Thread {
+	
+	//Printer p;
+	Name1 n;
+	
+	/*
+	 * public Thread5(Printer pref) { p=pref;
+	 */
+	//}
+	public Thread5(Name1 n1) {
+		n=n1;
+	}
+	
+	@Override
+	public void run() {
+		try {
+			Thread.currentThread().sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		p.printVal(10, "Thread 5");
+		n.printVal(10, "thread 5");
+	}
+	
+	
+
+
+}

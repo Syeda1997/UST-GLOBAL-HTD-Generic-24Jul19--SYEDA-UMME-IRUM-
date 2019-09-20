@@ -1,0 +1,15 @@
+package com.dev.threads;
+
+public class SyncMainThread {
+
+	public static void main(String[] args) {
+		System.out.println("Sync Main Thread started...");
+		Printer p=new Printer();
+		new Thread4(p).start();
+		new Thread5(p).start();
+
+		System.out.println("Sync Main Thread terminated...");
+
+	}
+
+}

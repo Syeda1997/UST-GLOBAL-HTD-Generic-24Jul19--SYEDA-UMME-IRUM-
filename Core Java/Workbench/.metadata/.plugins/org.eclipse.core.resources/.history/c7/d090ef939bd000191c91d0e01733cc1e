@@ -1,0 +1,7 @@
+package com.dev.collections;
+
+public interface EmpInt {
+	public boolean putEmp(Employees e);
+	public void getEmp();
+
+}

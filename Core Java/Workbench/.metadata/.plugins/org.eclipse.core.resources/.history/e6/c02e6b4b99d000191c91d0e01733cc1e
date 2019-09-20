@@ -1,0 +1,13 @@
+package com.dev.collections;
+
+import java.util.HashMap;
+
+public class IntImp {
+
+	public static void main(String[] args) {
+		
+		HashMap<String,Employees> hm=new HashMap<String,Employees>();
+
+	}
+
+}

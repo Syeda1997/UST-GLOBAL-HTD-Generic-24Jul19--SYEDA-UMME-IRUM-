@@ -1,0 +1,19 @@
+package com.dev.collections;
+
+public class EmpData {
+
+	public static void main(String[] args) {
+		
+		Empimp ei=new Empimp();
+		Employees e=new Employees();
+		e.setEmail("syeda@gmail.com");
+		e.setId(1);
+		e.setName("syeda");
+		e.setPassword("12345");
+		
+		boolean b=ei.addEmp(d);
+		System.out.println(b);
+
+	}
+
+}

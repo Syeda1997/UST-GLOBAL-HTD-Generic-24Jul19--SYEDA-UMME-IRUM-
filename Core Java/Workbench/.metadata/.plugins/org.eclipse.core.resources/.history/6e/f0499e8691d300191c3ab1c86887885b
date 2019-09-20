@@ -1,0 +1,7 @@
+package com.dev.lambdaexp;
+
+public interface FunctInt {
+
+	public void printVal();
+
+}

@@ -1,0 +1,17 @@
+package com.dev.threads;
+
+public class SyncMainThread {
+
+	public static void main(String[] args) {
+		System.out.println("Sync Main Thread started...");
+		
+		
+		
+		
+		
+		
+		System.out.println("Sync Main Thread terminated...");
+
+	}
+
+}

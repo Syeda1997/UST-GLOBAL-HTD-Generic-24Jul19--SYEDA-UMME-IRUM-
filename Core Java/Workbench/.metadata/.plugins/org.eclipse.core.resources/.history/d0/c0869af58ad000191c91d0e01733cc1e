@@ -1,0 +1,16 @@
+package com.dev.examples;
+
+public class Int {
+
+	static int i=0101;//its octane value for binary we need to specify 0b0101
+	static int j=10;
+	static int k=11;
+	public static void main(String[] args) {
+		System.out.println(i);
+		System.out.println(j++);
+		System.out.println(++k);
+		System.out.println(++j + k++);
+
+	}
+
+}

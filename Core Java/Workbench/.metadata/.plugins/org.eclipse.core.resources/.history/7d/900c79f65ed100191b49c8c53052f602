@@ -1,0 +1,9 @@
+package com.dev.test;
+
+public interface EmpInt {
+	public Employee insertEmp();
+	public void searchEmp();
+	public Employee removeEmp();
+	public Employee updateEmp();
+
+}

@@ -1,0 +1,11 @@
+package com.dev.arrays;
+
+public class Test {
+
+	public static void main(String[] args) {
+		int i=98;
+		char b=(char) i; //casting
+		System.out.println(b);
+	}
+
+}

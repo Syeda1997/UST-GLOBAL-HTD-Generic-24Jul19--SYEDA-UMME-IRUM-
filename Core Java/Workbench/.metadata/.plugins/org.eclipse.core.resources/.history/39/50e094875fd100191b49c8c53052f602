@@ -1,0 +1,36 @@
+package com.dev.test;
+
+import java.util.HashMap;
+
+public class ImpInt implements EmpInt{
+	
+	HashMap<String,Employee> hm=new HashMap<String,Employee>();
+
+	@Override
+	public Employee insertEmp(String k, Employee e) {
+		if(e!=null) {
+			hm.put("1", e);
+		}
+		return null;
+	}
+
+	@Override
+	public void searchEmp() {
+		
+		
+	}
+
+	@Override
+	public Employee removeEmp(String k, Employee e) {
+		
+		return null;
+	}
+
+	@Override
+	public Employee updateEmp(String k, Employee e) {
+		
+		return null;
+	}
+
+	
+}

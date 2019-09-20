@@ -1,0 +1,11 @@
+package com.dev.examples;
+
+public class Int {
+
+	static int i=010100;
+	public static void main(String[] args) {
+		System.out.println(i);
+
+	}
+
+}

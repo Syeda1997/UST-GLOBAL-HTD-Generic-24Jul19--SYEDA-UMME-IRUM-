@@ -1,0 +1,9 @@
+package com.dev.methods;
+
+import com.dev.encapsulation.Dogs;
+
+public class Demo {
+	Dogs d = new Dogs();
+	com.dev.constructors.Dogs d1=new com.dev.constructors.Dogs();
+
+}
