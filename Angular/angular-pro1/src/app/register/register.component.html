@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="col-md-6 offset-md-3 mt-5">
+        <form action="" [formGroup]='registerForm' (ngSubmit)='printForm(registerForm)'>
+            <div class=" form-group card card-body">
+                <h4 class="text-center">Register!!!</h4>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name='name' id='name' class='form-control' formControlName='name' >
+                    <div *ngIf='name.touched && name.invalid'>
+                        <div class='alert alert-danger' *ngIf='name.errors.minlength'>minimum length of this field is 3</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email"  name='email' id='email' class='form-control' formControlName='email' email>
+                    <div *ngIf='email.touched && email.invalid'>
+                            <div class='alert alert-danger' *ngIf='email.errors.noSpace'>No Space is Accepted</div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">MobileNo</label>
+                    <input type="text"  name='mobile' id='mobile'class='form-control' formControlName='mobile' >
+                    <div class='alert alert-danger' *ngIf='mobile.errors.minlength'>minimum length is 10</div>
+                </div>
+                <span>
+                <button type="submit" class="btn btn-success offset-md-1 col-md-4 mt-3">Submit</button>
+                <button type="reset" class="btn btn-danger offset-md-1 col-md-4 mt-3 ">Reset</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

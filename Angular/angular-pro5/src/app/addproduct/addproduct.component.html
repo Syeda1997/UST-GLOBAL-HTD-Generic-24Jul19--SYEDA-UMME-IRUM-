@@ -1,0 +1,14 @@
+<div class="col-md-4 offset-md-4 mt-4">
+    <div class="text-center bg-dark text-white"  >Add-Product</div>
+    <form #proForm='ngForm' (ngSubmit)='postPro(proForm)'>
+        <input type="hidden" name="id" #id='ngModel' 
+        [(ngModel)]='productService.selectedpro.id'>
+        <input type="text" name='name' class="form-control mb-3 mt-3"
+        #name='ngModel' [(ngModel)]='productService.selectedpro.name' placeholder="Enter Name..." required minlength="3">
+        <input type="url" name="img" class="form-control mb-3 mt-3"
+        #name='ngModel' [(ngModel)]='productService.selectedpro.img' placeholder="Enter imgurl..." required>
+        <input type="text" name='description' class="form-control mb-3 mt-3"
+        #name='ngModel' [(ngModel)]='productService.selectedpro.description' placeholder="Enter description..." required minlength="5">
+        <button type="submit" class='btn btn-outline-success float-right' [disabled]='proForm.invalid'>Submit</button>
+    </form>
+</div>

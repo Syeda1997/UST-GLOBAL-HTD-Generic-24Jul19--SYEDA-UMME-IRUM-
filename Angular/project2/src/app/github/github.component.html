@@ -1,0 +1,32 @@
+<div class='container col-md-12'>
+    <div class='card card-body'>
+        <h3 class='text-center'>Github</h3>
+        <table border="5px">
+            <thead class='bg-success color-white'>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>ReposUrl</th>
+                    <th>Delete</th>
+             </thead> 
+             <tbody>
+                 <tr *ngFor='let git of gitnews'>
+                     <td>{{git.login}}</td>
+                     <td>{{git.id}}</td>
+                     <td>{{git.avatar_url}}</td>
+                     <td>{{git.repos_url}}</td>
+                    <td><button class='btn btn-outline-danger' (click)=deleteData(data)>Delete</button></td>
+                 </tr>
+             </tbody>
+        </table>
+        <!-- to display without table just fetching the data -->
+        <div class='col-md-6 offset-3' *ngFor='let git of gitnews'>
+            <h1>{{git.login}}</h1>
+            <h3>{{git.type}}</h3>
+            <h2>{{git.id}}</h2>
+            <img src="{{git.avatar_url}}" alt="">
+            <h3>{{git.repos_url}}</h3>
+            <button class='btn btn-outline-danger' (click)=deleteData(data)>Delete</button>
+        </div>
+    </div>    
+</div>

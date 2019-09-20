@@ -1,0 +1,10 @@
+<div class='col-md-12 container mt-5'>
+    <input type="search" class='form-control'>
+    <div class= 'card card-body'*ngFor='let product of productService.products'>
+        <h1>{{product.name}}</h1>
+        <img src="{{product.img}}" alt="">
+        <h4>{{product.description}}</h4>
+        <button class="btn btn-outline-warning" (click)='updatePro(product)'>Update</button><br>
+        <button class='btn btn-outline-danger' (click)='deletePro(product)'>Delete</button>
+    </div>
+</div>

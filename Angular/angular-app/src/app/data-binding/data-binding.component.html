@@ -1,0 +1,33 @@
+<h1 [class]="textClasses">{{name}}</h1>
+<h1 [class.bg-danger]="redcolor" [class.bg-success]="!redcolor">{{5+5}}</h1> 
+<!-- class binding -->
+<img [src]="imgURL" alt="">
+<!-- property binding -->
+<!-- style binding -->
+<p [style.background]="paragraphstyle ? 'red':'blue'" [style.padding]='padding'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <!-- attribute binding -->
+            <th [attr.colspan]="colspan">Students</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>syeda</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>umme</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Irum</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>ruman</td>
+        </tr>
+    </tbody>
+</table>

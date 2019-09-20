@@ -1,0 +1,52 @@
+<div class="container">
+<div class="col-md-5 offset-md-4 mt-5">
+    <form action="" #loginForm='ngForm' (ngSubmit)=printForm(loginForm)>
+        <div class="form-group card card-body">
+            <h4 class='text-center'>Login</h4>
+            <label for="username">Username</label><br>
+            <input type="email" placeholder="Username" name='username' class="form-control" #username='ngModel' 
+            ngModel required minlength="5" email><br>
+            <div class='alert alert-danger' *ngIf='username.touched && username.invalid'>the invalid field
+                <div class='alert alert-danger' *ngIf='username.errors.email'>
+                    This input field takes only Email
+                </div>
+                <div class="alert alert-danger" *ngIf='username.errors.minlength && username.errors.required'>
+                    minimum length of this input field is 5
+                </div>
+            </div>
+            <label for="password">Password</label><br>
+            <input type="password" placeholder="Password" name='password' class="form-control" #password='ngModel'
+            ngModel  minlength="5"><br>
+            <div class='alert alert-danger' *ngIf='password.invalid && password.touched'>invalid password
+                <!-- <div class='alert alert-danger' *ngIf='password.errors.pattern '>pattern doesn't match -->
+
+                    <!-- <div class='alert alert-danger' *ngIf='password.errors.minlength'>invalid length/required</div> -->
+                <!-- </div> -->
+            </div>
+            <span>
+            <button type="submit" class='form-control col-md-4 offset-md-1 btn btn-success'  [disabled]='loginForm.invalid'>Submit</button>
+            <button type="reset" class='form-control  col-md-4 offset-md-2 btn btn-danger'>Reset</button>
+        </span>
+        </div>
+    </form>
+</div>
+</div>
+
+<div class="container">
+    <table class="table table-hover table-bordered table-dark">
+        <thead>
+            <tr>
+                <th>index</th>
+                <th>username</th>
+                <th>password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let user of users; index as i'>
+                <td>{{i+1}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
