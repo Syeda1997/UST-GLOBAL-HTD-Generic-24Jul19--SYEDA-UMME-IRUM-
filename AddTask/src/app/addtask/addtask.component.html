@@ -1,0 +1,18 @@
+<div class='container  mt-4'>
+    <!-- container class is used to display the form in a container -->
+    <div class='card card-body col-md-6 offset-md-3'>
+        <!-- card body class is used to declare body of form in a particular manner -->
+        <form #form action="POST" >
+           <h3 class='offset-4 form-group'>ADD TASK</h3>
+                <div class='form-group' (ngSubmit)='posttasks(form)'>
+                    <!-- form-group is used to align the form in group or to have equal space between other labels -->
+                    <label for="task">Task</label>
+                    <input type="text" name='task' id='task' #task=ngModel [ngModel] class='form-control'  required placeholder="Enter Task" minlength="3">
+                </div>
+                <div class='form-group'>
+                    <button type="submit" class='btn btn-outline-success float-right' [disabled]='form.invalid'>Submit</button>
+                </div>
+        </form>
+    </div>
+</div>
+
