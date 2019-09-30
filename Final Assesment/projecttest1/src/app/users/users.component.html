@@ -1,0 +1,20 @@
+<div class='container col-md-12'>
+    <div class='card card-body'>
+        <table border="3px">
+            <thead class='bg-light color-white'>
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Address</th>
+             </thead> 
+             <tbody>
+                 <tr *ngFor='let user of users'>
+                     <td>{{user.name}}</td>
+                     <td>{{user.username}}</td>
+                     <td>{{user.email}}</td>
+                     <td>{{user.website}}</td>
+                    <td>{{user.address}}</td>
+                 </tr>
+             </tbody>
+        </table>
